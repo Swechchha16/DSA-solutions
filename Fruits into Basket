@@ -1,0 +1,22 @@
+class Solution {
+    public int totalFruit(int[] fruits) {
+        int si=0;
+        int ei=0;
+        int ans=0;
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        while(ei<fruits.length){
+            hs.put(fruits[ei],hs.getOrDefault(fruits[ei],0)+1);
+            while(si<=ei && hs.size()>2){
+                if(hs.get(fruits[si])==1)
+                    hs.remove(fruits[si]);
+                else
+                    hs.put(fruits[si],hs.get(fruits[si])-1);
+                si++;
+            }
+            ans=Math.max(ans,ei-si+1);
+            ei++;
+        }
+        return ans;
+        
+    }
+}
