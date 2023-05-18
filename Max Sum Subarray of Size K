@@ -1,0 +1,15 @@
+class Solution:
+    def maximumSumSubarray (self,K,Arr,N):
+        s=0
+        e=0
+        sum1=0
+        ans=0
+        while(e<N):
+            sum1+=Arr[e]
+            if((e-s+1)==K):
+                ans=max(ans,sum1)
+                sum1-=Arr[s]
+                s+=1
+            e+=1
+        return ans
+                
